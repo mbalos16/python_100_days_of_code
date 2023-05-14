@@ -164,7 +164,7 @@ if escape_home_new == "door":
     print(troll_drawing)
     escape_troll = input(
         "You're outside the house where a huge troll looks at you with hungry eyes. You only have two posibilities: run or fight. What are you going to do? Please write run or fight.\n"
-    )
+    ).lower()
     if escape_troll == "fight":
         print(
             f"{die_drawing} \n The troll is very powerful and agile so it catch you with no effort and eats you. You die! \n GAME OVER!"
@@ -173,7 +173,7 @@ if escape_home_new == "door":
         print(run_draw)
         answer_escape_troll = input(
             "The troll is very heavy so you were able to escape. Now you are very tired and  you can keep going or sleep. What do you want to do?  Please write sleep or go. \n"
-        )
+        ).lower()
         if answer_escape_troll == "sleep":
             print(
                 f"{die_drawing} \n The troll finds you and eats you. You die! \n GAME OVER!"
@@ -194,7 +194,7 @@ elif escape_home_new == "window":
     print(window_draw)
     window = input(
         "There's no one here, so you are save. You can go both right or left. Where do you want to go? Please write right or left. \n"
-    )
+    ).lower()
     if window == "right":
         print(
             f"{waterfall_draw} \n You find a river and a garage where Santa Clause is sleeping with a bottle of vodka on his side. You win! \n GAME OVER!"
@@ -205,6 +205,5 @@ elif escape_home_new == "window":
         )
     else:
         print("Your decision was wrong. Game Over!")
-
 else:
     escape_troll = input("Your decision was wrong. Game Over!")
