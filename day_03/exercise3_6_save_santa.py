@@ -1,3 +1,5 @@
+# Exercise 3.6 - Save Santa Game
+
 print("Welcome to the Save Santa game.")
 print("Your mission is to find Santa Clause while dealing with challenges to save him.")
 
