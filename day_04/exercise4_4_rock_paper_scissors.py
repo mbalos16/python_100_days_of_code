@@ -1,4 +1,4 @@
-# Exercise 4.3 - Rock Paper Scissors
+# Exercise 4.4 - Rock Paper Scissors
 # Go to https://replit.com/@appbrewery/rock-paper-scissors-start?v=1
 
 rock_draw = """
