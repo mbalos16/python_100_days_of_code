@@ -1,4 +1,4 @@
-# Exercise 4.4 - Rock Paper Scissors
+# Exercise 4.3 - Rock Paper Scissors
 # Go to https://replit.com/@appbrewery/rock-paper-scissors-start?v=1
 
 rock_draw = """
@@ -41,13 +41,12 @@ scissors = 2
 # Extract user's answer
 your_answer = int(
     input(
-        f"What do you choose? Type 0 for Rock, {paper} for Paper or {scissors} for Scissors."
+        f"What do you choose? Type 0 for Rock, {paper} for Paper or {scissors} for Scissors.\n"
     )
 )
 
 # Generate robot's answer
 robot_answer = random.randint(0, 2)
-print(robot_answer)
 
 # Create an if/elif/else statement to check all the posibilities
 if your_answer == rock:
@@ -56,7 +55,9 @@ if your_answer == rock:
     if robot_answer == 2:
         print(f"{rock_draw} \n Computer chose: {scissors_draw}\n You win")
     elif robot_answer == rock:
-        print("This was a tie, please try again.")
+        print(
+            f"{rock_draw}\n Computer chose: {rock_draw} \n This was a tie, please try again."
+        )
 
 if your_answer == paper:
     if robot_answer == rock:
@@ -64,7 +65,9 @@ if your_answer == paper:
     if robot_answer == scissors:
         print(f"{paper_draw} \n Computer chose: {scissors_draw}\n You lose")
     elif robot_answer == paper:
-        print("This was a tie, please try again.")
+        print(
+            f"{paper_draw}\n Computer chose: {paper_draw} \n This was a tie, please try again."
+        )
 
 if your_answer == scissors:
     if robot_answer == rock:
@@ -72,4 +75,6 @@ if your_answer == scissors:
     elif robot_answer == paper:
         print(f"{scissors_draw} \n Computer chose: {paper_draw}\n You win")
     elif robot_answer == scissors:
-        print("This was a tie, please try again.")
+        print(
+            f"{scissors_draw}\n Computer chose: {scissors_draw} \n This was a tie, please try again."
+        )
