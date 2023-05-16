@@ -1,8 +1,9 @@
+# Password Generator Project
+
+
 # Go to: https://replit.com/@appbrewery/password-generator-start?v=1
 
-# Password Generator Project
 import random
-
 letters = [
     "a",
     "b",

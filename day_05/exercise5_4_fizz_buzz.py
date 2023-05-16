@@ -1,3 +1,5 @@
+# Exercise 5.4 - Fizz Buzz FizzBuzz
+
 # Write your code below this row 👇
 for number in range(1, 101):
     # We check if the number can be divided by 3 and 5. If so, we print FizzBuzz.
