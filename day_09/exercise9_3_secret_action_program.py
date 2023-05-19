@@ -1,10 +1,14 @@
 # Exercise 9.3 Secret Action Program
 
+import art_exercise9_3_secret_action_program
 from replit import clear
 
 # HINT: You can call clear() to clear the output in the console.
 bidders = {}
 more_bidders = True
+
+# Import logo
+print(art_exercise9_3_secret_action_program.logo)
 
 # While there is still bidders in the room we still run the code.
 while more_bidders:
