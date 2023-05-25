@@ -34,10 +34,12 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 ############### Functions #####################
 # Get a random card from a list.
 def get_card():
+    """Returns a random card from the deck"""
     return cards[random.randint(0, (len(cards) - 1))]
 
 
 def current_score(player_hand):
+    """Returns the sum of all the cards of the player."""
     final_score = 0
     for card in player_hand:
         final_score += card
@@ -56,6 +58,7 @@ def print_details(
     computer_hand,
     print_computer_hand=False,
 ):
+    """Prints user hand, computer hand and scores."""
     print(f"    Your cards: {user_hand}, current score: {current_score(user_hand)}")
     print(f"    Computer's first card: {computer_hand[0]}.")
     print("----------------------------------------------")
@@ -68,6 +71,7 @@ def print_details(
 
 
 def check_if_win(user_hand, computer_hand):
+    """Checks if the user wins and prints the result."""
     # When the user is above 21
     if current_score(user_hand) > 21:
         print_details(
@@ -104,6 +108,7 @@ def check_if_win(user_hand, computer_hand):
 
 # Ask the user if wants a new card?
 def ask_new_card(user_hand):
+    """Returns an updated hand for the user adding a nwe card"""
     answer = input(" Type 'y' to get another card, type 'n' to pass: ").lower()
     if answer == "y":
         user_wants_new_card = True
@@ -116,6 +121,7 @@ def ask_new_card(user_hand):
 
 # Play the game
 def play(user_hand, computer_hand):
+    """Checks if the user wants to play. If so, will add as many new cards to the user hand as the user wants, and next checks if the user wins."""
     print(art_exercise11_1_blackjack.logo)
     user_wants_new_card = True
     while current_score(user_hand) < 21 and user_wants_new_card:
@@ -127,6 +133,7 @@ def play(user_hand, computer_hand):
 
 # Do you want to play?
 def start():
+    """Checks if the user wants to play and if so, prints the logo, generate the first hand and starts the game"""
     do_you_play = input(f"Do you want to play a game of Blackjack? Type 'y' or 'n': ")
 
     if do_you_play == "y":
