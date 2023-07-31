@@ -1,0 +1,29 @@
+/* Exercise 43.3. Spanish Website  */
+#red{
+    color: red;
+}
+
+#blue{
+    color: blue;
+}
+
+#orange{
+    color: orange;
+}
+
+#green{
+    color: green;
+}
+
+#yellow{
+    color: yellow;
+}
+
+.color-tiles {
+    font-weight: normal;
+}
+
+img{
+    height: 200px;
+    width: 200px;
+}
