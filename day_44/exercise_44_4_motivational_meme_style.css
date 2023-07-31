@@ -1,0 +1,33 @@
+/* Exercise 44.4. Motivational meme */
+*{
+    background-color: black;
+}
+.content{
+    height: 50%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+img{
+    width: 100%;
+    margin-top: 20px;
+    border: 5px solid aliceblue;
+}
+
+h1{
+    color: aliceblue;
+    font-family: 'Libre Baskerville', serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+p{
+    color: aliceblue;
+    text-align: center;
+    font-size: 1rem;
+}
+
+html{
+    font-size: 19px;
+}
