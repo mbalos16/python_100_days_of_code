@@ -30,15 +30,7 @@ def contact():
 @app.route("/<blog_id>")
 def get_individual_blog(blog_id):
     all_posts = get_post()
-    print("-----------------------")
-    print(blog_id)
-    print("-----------------------")
-    print(all_posts)
-    print("-----------------------")
     post = all_posts[int(blog_id) - 1]
-    print("-----------------------")
-    print(post)
-    print("-----------------------")
     return render_template("post.html", post=post, blog_id=blog_id)
 
 
