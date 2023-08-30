@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Delete</title>
+  </head>
+  <body>
+    <form action="#" method="post">
+      <a href="{{ url_for('home') }}">Back</a>
+      <h1 name="title">{{book.title}}</h1>
+      <h2 name="author">{{book.author}}</h2>
+      <h3 name="author">Rating: {{book.rating}}</h3>
+      <p>Are you sure you want to delete this book?</p>
+      <button type="submit" name="yes">Yes</button>
+    </form>
+  </body>
+</html>
