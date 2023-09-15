@@ -5,6 +5,8 @@ import random
 
 app = Flask(__name__)
 
+AUTHORIZED_API_KEY = "TopSecretAPIKey"
+
 ##Connect to Database
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cafes.db"
 db = SQLAlchemy()
@@ -90,7 +92,7 @@ def get_all_cafes():
 
 
 # The way of defining input arguments to work in Postman.
-@app.route("/search/", methods=["GET"])
+@app.route("/search", methods=["GET"])
 def get_location():
     """Returns a jason with all the cafes in the database."""
     location = request.args.get("location")
@@ -110,10 +112,60 @@ def get_location():
 
 
 ## HTTP POST - Create Record
+@app.route("/add", methods=["POST"])
+def post_new_cafe():
+    new_cafe = Cafe(
+        name=request.form.get("name"),
+        map_url=request.form.get("map_url"),
+        img_url=request.form.get("img_url"),
+        location=request.form.get("location"),
+        has_sockets=bool(request.form.get("sockets")),
+        has_toilet=bool(request.form.get("toilet")),
+        has_wifi=bool(request.form.get("wifi")),
+        can_take_calls=bool(request.form.get("calls")),
+        seats=request.form.get("seats"),
+        coffee_price=request.form.get("coffee_price"),
+    )
+    db.session.add(new_cafe)
+    db.session.commit()
+    return jsonify(response={"success": "Successfully added the new cafe."})
+
 
 ## HTTP PUT/PATCH - Update Record
+@app.route("/update-price/<cafe_id>", methods=["PATCH"])
+def update_details(cafe_id):
+    new_price = request.args.get("new_price")
+    cafe = db.get_or_404(
+        Cafe,
+        cafe_id,
+        description="Sorry a cafe with that id was not found in the database.",
+    )
+    cafe.coffee_price = new_price
+    db.session.commit()
+    return jsonify(response={"success": "Successfully updated the price."})
+
 
 ## HTTP DELETE - Delete Record
+@app.route("/report-closed/<cafe_id>", methods=["DELETE"])
+def delete_cafe(cafe_id):
+    user_api_key = request.args.get("api-key")
+    cafe = db.get_or_404(
+        Cafe,
+        cafe_id,
+        description="Sorry a cafe with that id was not found in the database.",
+    )
+    if user_api_key == AUTHORIZED_API_KEY:
+        db.session.delete(cafe)
+        db.session.commit()
+        return jsonify(
+            response={"success": "The cafe shop has been succesfully deleted."}
+        )
+    else:
+        return jsonify(
+            response={
+                "success": "Sorry, that's not allowed. Make sure you have the correct api_key."
+            }
+        )
 
 
 if __name__ == "__main__":
