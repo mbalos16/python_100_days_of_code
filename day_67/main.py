@@ -43,6 +43,17 @@ class BlogForm(FlaskForm):
     submit = SubmitField(label="SUBMIT POST")
 
 
+# # Create a form with FlaskForms to edit a blog based on previows information
+
+# class FilledBlogPost(FlaskForm):
+#     title = StringField(label="Blog Post Title", validators=[DataRequired(message=title_message)])
+#     subtitle = StringField(label="Subtitle", validators=[DataRequired(message=subtitle_message)])
+#     author = StringField(label="Your Name", validators=[DataRequired(message=author_message)])
+#     img_url = StringField(label="Blog Image URL", validators=[DataRequired(message=title_message)])
+#     body = CKEditorField(label="Blog Content")
+#     submit = SubmitField(label="SUBMIT POST")
+
+
 with app.app_context():
     db.create_all()
 
@@ -71,6 +82,16 @@ def generate_blog_date():
     year = today.strftime("%Y")
     return f"{month} {day}, {year}"
 
+def update_blog(post_id, updated_blog):
+    """Access the posts database and update the propper post based on its previows id."""
+    with app.app_context():
+        post = db.session.execute(db.select(BlogPost).where(BlogPost.id == post_id)).scalar()
+        post.title = updated_blog.title
+        post.subtitle = updated_blog.subtitle
+        post.body = updated_blog.body
+        post.author = updated_blog.author
+        post.img_url = updated_blog.img_url
+        db.session.commit()
 
 @app.route("/")
 def get_all_posts():
@@ -87,7 +108,7 @@ def get_all_posts():
 def show_post(post_id):
     # Retrieve a BlogPost from the database based on the post_id
     requested_post = get_post(post_id)
-    return render_template("post.html", post=requested_post)
+    return render_template("post.html", post=requested_post, post_id=post_id)
 
 
 # Create the route add_new_post() to create a new blog post
@@ -118,10 +139,38 @@ def add_new_post():
         return redirect("/")
 
 
-# TODO: edit_post() to change an existing blog post
+# Create an edit_post() to change an existing blog post
+@app.route("/edit_post/<post_id>", methods=["GET", "POST"])
+def edit_post(post_id):
+    if request.method == "GET":
+        actual_post = get_post(post_id)
+        form = BlogForm(
+            title = actual_post.title,
+            subtitle= actual_post.subtitle,
+            body=actual_post.body,
+            author=actual_post.author,
+            img_url=actual_post.img_url
+        )
+        return render_template("make-post.html", form=form, post_id=post_id)
+    else:
+        # Get the data from the form using the actual id and date.
+        updated_blog = BlogPost(
+            title=request.form.get("title"),
+            subtitle=request.form.get("subtitle"),
+            body=request.form.get("body"),
+            author=request.form.get("author"),
+            img_url=request.form.get("img_url"),
+        )
+        update_blog(post_id=post_id, updated_blog=updated_blog)
+        return redirect(url_for('show_post', post_id=post_id))
 
-# TODO: delete_post() to remove a blog post from the database
-
+# A delete_post() route to remove a blog post from the database
+@app.route("/delete/<post_id>", methods =["GET"])
+def delete(post_id):
+    post_to_delete = db.session.execute(db.select(BlogPost).where(BlogPost.id == post_id)).scalar()
+    db.session.delete(post_to_delete)
+    db.session.commit()
+    return redirect(url_for('get_all_posts'))
 
 # Below is the code from previous lessons. No changes needed.
 @app.route("/about")

@@ -28,11 +28,7 @@
 
         <div class="d-flex justify-content-end mb-4">
           <!-- TODO: Editing posts-->
-          <a
-            class="btn btn-primary float-right"
-            href="{{ url_for('add_new_post')}}"
-            >Edit Post</a
-          >
+          <a class="btn btn-primary float-right" href="{{url_for('edit_post', post_id=post_id)}}" >Edit Post</a>
         </div>
       </div>
     </div>
