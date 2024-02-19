@@ -38,7 +38,7 @@ class Typing:
         # Subtitle label
         self.subtitle_label = Label(
             window,
-            text=f"A speed typing app where you can test your typing velocity for {self.type_minutes} minute!",
+            text=f"A speedy typing application that allows you to measure your typing speed for {self.type_minutes} minute!",
             bd=0,
             fg=self.sunglow_color,
             bg=self.black_olive_color,
@@ -49,7 +49,7 @@ class Typing:
         # Explanation label
         self.explanation_label = Label(
             window,
-            text=f"When time ends, the words and characters will be count.\n Your score will be checks against other users in the app.\nIf you are the one with the highest score we will let you know.\n Wish you luck!",
+            text="When time is up, the number of words and characters will be displayed on the screen. Good luck!",
             bd=0,
             fg=self.isabelline_color,
             bg=self.black_olive_color,
