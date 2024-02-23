@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HueHarvest</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class = "container">
+    <div class="row wrapper">
+      <div class="welcome">
+          <div class = "row title">
+            <h1>HueHarvest</h1>
+          </div>
+          <div>
+            <p> 🎉 Hooooorrrray 🎉! Here's the extracted color palette from the provided image. Click on a color to copy it to your clipboard.</p>
+          </div>
+          <div class = "row">
+            <div class = "col-6">
+                <img src={{image_path}} alt="User image">
+            </div>
+            <div class = "col-6">
+              <div class = "colours">
+                {% for colour in colours %}
+                <div class="colour-box" style="background-color:{{colour}};" data-colour="{{colour}}">
+                  <p>{{colour}}</p>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Function to copy the colour to the clipboard
+  function copyColourToClipboard(colour) {
+    navigator.clipboard.writeText(colour).then(() => {
+        alert(`The colour: '${colour}' is copied to clipboard!`);
+    }).catch(err => {
+        console.error('There was an error while copying the colour: ', err);
+    });
+  }
+  
+  // Attach click event listeners to each colour box
+  document.querySelectorAll('.colour-box').forEach(box => {
+    box.addEventListener('click', function() {
+        const colour = this.getAttribute('data-colour');
+        copyColourToClipboard(colour);
+    });
+  });
+  </script>
+</body>
+<footer>
+  <p>© Maria Balos | 2024</p>
+</footer>
+</html>
+
+
+
+
+

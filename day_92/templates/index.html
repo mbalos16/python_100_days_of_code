@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HueHarvest</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class = "container">
+    <div class="content">
+      <div class = "row welcome">
+        <div class="title">
+          <h1>HueHarvest</h1>
+          <p class = "intro-text">This image palette generator employs the k-means clustering algorithm 
+            to analyze an image's color data, identifying the 10 most prevalent colors. 
+            This process involves sampling the image's pixels, using the k-means algorithm 
+            to find clusters in the color space, and then displaying the resulting palette 
+            for visual appreciation and further use.
+          </p>
+        </div>
+      </div>
+      <div class = "row upload_image">
+          <h2>Generate stunning colour palettes composed of 10 colours extracted from your image!</h2>
+          <form action="{{url_for('get_image_palette') }}" enctype="multipart/form-data" method="POST">
+            <input name="img" type="file" id="browse-button">
+            <input type="submit" name="submit" value="GENERATE" id="generate-button"/>
+          </form>
+      </div>
+    </div>
+  </div>
+</body>
+<footer>
+    <p>© Maria Balos | 2024</p>
+</footer>
+</html>
