@@ -1,0 +1,15 @@
+{%extends "base.html"%}
+{%block title%} Coffee Shop Add {%endblock%}
+{% block content%}
+<div class = "container mt-4">
+    <h1>Coffee Shop Added Successfully</h1>
+    <p>
+        Thank you for your contribution to our community!<b>"{{new_coffee_name}}"</b> has been successfully added from our listings. Your input helps us keep our information up-to-date and relevant. If there's anything else you'd like to do, here are a few suggestions:</p>
+        <ul>
+            <li><a  href="{{url_for('home')}}">Return to the Homepage</a></li>
+            <li><a  href="{{url_for('coffee_shops')}}">View More Coffee Shops</a></li>
+            <li><a  href="{{url_for('suggest_coffee')}}">Add Another Coffee Shop</a></li>
+        </ul>
+    <p>We appreciate your help in making our community better!</p>
+</div>
+{% endblock %}  

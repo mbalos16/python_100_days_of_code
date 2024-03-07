@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+{%block title%} Suggest a Coffee Shop {%endblock%}
+{% block content%}
+<div class="container mt-4">
+    <h1>Record a new coffee shops</h1>
+    <p> Add a new coffee shop listing to our MochaMaps database. Please ensure all information is accurate before submitting. </p>
+    <form action="{{ url_for('suggest_coffee') }}" method="post">
+        <label for="name"> Coffee Shop Name </label><br>
+    	<input class = "mb-4" type="text" name="name" placeholder="The Coffee Shop" required="required" /><br>
+
+        <label for="location"> Location </label><br>
+		<input class = "mb-4" type="location" name="location" placeholder="King's Cross" required="required" /><br>
+        
+        <label for="img_url"> Image URL </label><br>
+        <input class = "mb-4" type="url" name="img_url" placeholder="https://mariabalos.art/" required="required" /><br>
+        
+        <label for="img_url"> Google Maps URL </label><br>
+        <input class = "mb-4" type="url" name="map_url" placeholder="https://maps.app.goo.gl/hgTJJqdWUVou4Fuf7" required="required" /><br>
+
+        <label for="img_url"> Coffee price (£) </label><br>
+        <input class = "mb-4" type="text" name="coffee_price" placeholder="2.4" required="required" /><br>
+
+        <label for="img_url"> Number of seats (range)</label><br>
+        <input class = "mb-4" type="text" name="seats" placeholder="10-20" required="required" /><br>
+
+        <input class = "mb-4" type="checkbox" autocomplete="off" name="sockets" value="True"> Sockets
+        <input class = "ml-5 mb-4" type="checkbox" autocomplete="off" name="toilet" value="True"> Toilet
+        <input class = "ml-5 mb-4" type="checkbox" autocomplete="off" name="wifi" value="True"> Wifi
+        <input class = "ml-5 mb-4" type="checkbox" autocomplete="off" name="can_take_calls" value="True"> You can take calls
+        <br>
+        <button type="submit" class="btn btn-primary mt-4">RECORD THE COFFEE SHOP</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{%extends "base.html"%}
+{%block title%} Suggest a Coffee Shop {%endblock%}
+{% block content%}
+<div class = "container mt-4">
+    <h1>Remove a Listing from Our Coffee Shop Directory</h1>
+    <p>If you're uncertain about the coffee shop's ID, please refer to the <a href="{{url_for('coffee_shops')}}">Coffee Shops</a> section of this website. Below, an image is provided to illustrate where you can locate the ID on each shop's information card.</p>
+    <div class = "row">
+        <div class = "col-md-6">
+            <form method="post">
+                Please introduce the id of the coffee shop that you would like to delete: <br>
+                <input class = "mt-2" coffee_id="coffee_id" name = "coffee_id"><br>
+                <input class = "mt-2" type="submit" value="Delete coffee shop">
+            </form> 
+        </div>
+        <div class = "col-md-6">
+            <img src="./static/assets/coffee_shop_id.png">
+        </div>
+    </div>
+       
+</div>
+{% endblock %}  
