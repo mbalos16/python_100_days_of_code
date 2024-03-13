@@ -5,10 +5,11 @@ from exercise_39_1_flight_deal_finder_secrets import read_secrets
 class NotificationManager:
     # This class is responsible for sending notifications with the deal flight details.
     def __init__(self) -> None:
-        self.FROM_PHONE_NUMBER = read_secrets("FROM_PHONE_NUMBER")
-        self.TO_PHONE_NUMBER = read_secrets("TO_PHONE_NUMBER")
-        self.TWILIO_ACCOUNT_SID = read_secrets("TWILIO_ACCOUNT_SID")
-        self.TWILIO_TOKEN = read_secrets("TWILIO_TOKEN")
+        self.secrets = read_secrets()
+        self.FROM_PHONE_NUMBER = self.secrets["FROM_PHONE_NUMBER"]
+        self.TO_PHONE_NUMBER = self.secrets["TO_PHONE_NUMBER"]
+        self.TWILIO_ACCOUNT_SID = self.secrets["TWILIO_ACCOUNT_SID"]
+        self.TWILIO_TOKEN = self.secrets["TWILIO_TOKEN"]
 
     def compare_data(self, sheety_data, flight_data):
         deals_data = {}

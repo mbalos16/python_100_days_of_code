@@ -6,8 +6,9 @@ from exercise_39_1_flight_deal_finder_secrets import read_secrets
 class DataManager:
     # This class is responsible for talking to the Google Sheet.
     def __init__(self) -> None:
-        self.SHEETY_USERNAME = read_secrets("SHEETY_USERNAME")
-        self.SHEETY_AUTH = read_secrets("SHEETY_AUTH")
+        self.secrets = read_secrets()
+        self.SHEETY_USERNAME = self.secrets["SHEETY_USERNAME"]
+        self.SHEETY_AUTH = self.secrets["SHEETY_AUTH"]
         self.endpoint = (
             f"https://api.sheety.co/{self.SHEETY_USERNAME}/flightDeals/prices"
         )

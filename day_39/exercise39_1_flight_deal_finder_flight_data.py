@@ -5,8 +5,9 @@ from exercise_39_1_flight_deal_finder_secrets import read_secrets
 class FlightData:
     # This class is responsible for structuring the flight data.
     def __init__(self, origin="LON", min_nights=7, max_nights=28) -> None:
-        self.FLIGHT_DATA_ENDPOINT = read_secrets("FLIGHT_DATA_ENDPOINT")
-        self.FLIGHT_DATA_APIKEY = read_secrets("FLIGHT_DATA_APIKEY")
+        self.secrets = read_secrets()
+        self.FLIGHT_DATA_ENDPOINT = self.secrets["FLIGHT_DATA_ENDPOINT"]
+        self.FLIGHT_DATA_APIKEY = self.secrets["FLIGHT_DATA_APIKEY"]
         self.origin = origin
         self.min_nights = min_nights
         self.max_nights = max_nights

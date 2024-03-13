@@ -5,8 +5,9 @@ from exercise_39_1_flight_deal_finder_secrets import read_secrets
 class FlightSearch:
     # This class is responsible for talking to the Flight Search API.
     def __init__(self) -> None:
-        self.FLIGHT_SEARCH_ENDPOINT = read_secrets("FLIGHT_SEARCH_ENDPOINT")
-        self.FLIGHT_SEARCH_APIKEY = read_secrets("FLIGHT_SEARCH_APIKEY")
+        self.secrets = read_secrets()
+        self.FLIGHT_SEARCH_ENDPOINT = self.secrets["FLIGHT_SEARCH_ENDPOINT"]
+        self.FLIGHT_SEARCH_APIKEY = self.secrets["FLIGHT_SEARCH_APIKEY"]
 
     def get_iata_codes(self, city):
         tequila_endpoint = self.FLIGHT_SEARCH_ENDPOINT
